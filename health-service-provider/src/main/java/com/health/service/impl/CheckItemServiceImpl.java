@@ -1,7 +1,8 @@
 package com.health.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
@@ -11,8 +12,7 @@ import com.itheima.entity.PageResult;
 import com.itheima.mapper.CheckItemMapper;
 import com.itheima.pojo.CheckItem;
 
-@Service(interfaceClass=CheckItemService.class)
-@Transactional
+@Service
 public class CheckItemServiceImpl implements CheckItemService{
 
 	@Autowired
@@ -27,8 +27,6 @@ public class CheckItemServiceImpl implements CheckItemService{
 	@Override
 	public PageResult pageQuery(Integer currentPage, Integer pageSize, String queryString) {
 		// TODO Auto-generated method stub
-		System.out.println("+++++++++++++");
-		System.out.println(currentPage+"777777777777777777");
 		PageHelper.startPage(currentPage, pageSize);
 		Page<CheckItem> page = checkItemMapper.selectByCondition(queryString);
 		return new PageResult(page.getTotal(), page.getResult());
@@ -56,6 +54,12 @@ public class CheckItemServiceImpl implements CheckItemService{
 	public CheckItem findById(Integer id) {
 		// TODO Auto-generated method stub
 		return checkItemMapper.findById(id);
+	}
+
+	@Override
+	public List<CheckItem> findAll() {
+		// TODO Auto-generated method stub
+		return checkItemMapper.findAll();
 	}
 
 }

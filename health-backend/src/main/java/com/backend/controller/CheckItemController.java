@@ -1,5 +1,7 @@
 package com.backend.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -77,6 +79,17 @@ public class CheckItemController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			return new Result(false, MessageConstant.ADD_CHECKITEM_FAIL);
+		}
+	}
+	
+	//查找所有检查项数据
+	@RequestMapping("/findAll")
+	public Result findAll(){
+		List<CheckItem> list = checkItemService.findAll();
+		if (list!=null && list.size()>0) {
+			return new Result(true, MessageConstant.ADD_CHECKITEM_SUCCESS, list);
+		}else{
 			return new Result(false, MessageConstant.ADD_CHECKITEM_FAIL);
 		}
 	}
