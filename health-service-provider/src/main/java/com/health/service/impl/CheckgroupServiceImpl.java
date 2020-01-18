@@ -73,4 +73,10 @@ public class CheckgroupServiceImpl implements CheckgroupService{
 		//更新检查组基本信息
 		checkgroupMapper.edit(checkGroup);
 	}
+
+	@Override
+	public List<CheckGroup> findAll() {
+		// TODO Auto-generated method stub
+		return checkgroupMapper.findAll();
+	}
 }

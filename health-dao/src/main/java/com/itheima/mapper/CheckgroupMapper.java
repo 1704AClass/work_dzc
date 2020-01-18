@@ -29,4 +29,7 @@ public interface CheckgroupMapper {
 
 	void edit(CheckGroup checkGroup);
 
+	@Select("select * from t_checkgroup")
+	List<CheckGroup> findAll();
+
 }

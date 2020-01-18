@@ -8,6 +8,13 @@
   <groupId>com.health</groupId>
   <artifactId>health-common</artifactId>
   <dependencies>
+   <!-- 七牛云 -->
+   <dependency>
+		<groupId>com.qiniu</groupId>
+		<artifactId>qiniu-java-sdk</artifactId>
+		<version>7.2.0</version>
+	</dependency>
+	<!-- github -->
   	<dependency>
   		<groupId>com.github.pagehelper</groupId>
   		<artifactId>pagehelper</artifactId>

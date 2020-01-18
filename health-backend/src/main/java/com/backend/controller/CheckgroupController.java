@@ -77,4 +77,14 @@ public class CheckgroupController {
 	}
 	return new Result(true,MessageConstant.EDIT_CHECKGROUP_SUCCESS);
 	}
+	
+	//获取所有
+	@RequestMapping("/findAll")
+	public Result findAll(){
+		List<CheckGroup> list = checkgroupService.findAll();
+		if (list!=null&&list.size()>0) {
+			return new Result(true, MessageConstant.ADD_CHECKGROUP_SUCCESS, list);
+		}
+		return new Result(false, MessageConstant.ADD_CHECKGROUP_FAIL);
+	}
 }
