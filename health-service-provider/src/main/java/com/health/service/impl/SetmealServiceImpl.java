@@ -21,9 +21,7 @@ public class SetmealServiceImpl implements SetmealService{
 
 	@Autowired
 	private SetmealMapper setmealMapper;
-	@Autowired
-	private JedisPool jedisPool;
-	
+
 	//新增套餐
 	@Override
 	public void add(Setmeal setmeal, Integer[] checkgroupIds) {
@@ -34,13 +32,13 @@ public class SetmealServiceImpl implements SetmealService{
 			setSetmealAndCheckGroup(setmeal.getId(), checkgroupIds);
 		}
 		//将图片名称保存到Redis
-		savePic2Redis(setmeal.getImg());
+		//savePic2Redis(setmeal.getImg());
 	}
 	
 	//将图片名称保存到Redis
-	private void savePic2Redis(String pic){
-	     jedisPool.getResource().sadd(RedisConstant.SETMEAL_PIC_DB_RESOURCES,pic);
-	}
+	/*private void savePic2Redis(String pic){
+	    
+	}*/
 
 
 	//绑定套餐和检查组的多对多关系
