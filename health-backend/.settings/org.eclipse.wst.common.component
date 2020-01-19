@@ -7,10 +7,10 @@
         <dependent-module archiveName="health-interface-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/health-interface/health-interface">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="health-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/health-common/health-common">
+        <dependent-module archiveName="health-pojo-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/health-pojo/health-pojo">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="health-pojo-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/health-pojo/health-pojo">
+        <dependent-module archiveName="health-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/health-common/health-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="health-backend"/>

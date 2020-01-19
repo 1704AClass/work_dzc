@@ -3,6 +3,7 @@ package com.backend.controller;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,6 @@ import com.itheima.entity.Result;
 import com.itheima.pojo.Setmeal;
 import com.itheima.utils.QiniuUtils;
 
-import redis.clients.jedis.JedisPool;
 
 /*
  * 套餐管理
@@ -30,6 +30,9 @@ public class SetmealController {
 
 	@Reference
 	private SetmealService setmealService;
+	
+	@Autowired
+	private RedisTemplate redisTemplate;
 	
 	//图片上传
 	@RequestMapping("/upload")
@@ -44,6 +47,7 @@ public class SetmealController {
 			String fileName = UUID.randomUUID().toString() + suffix;
 			QiniuUtils.upload2Qiniu(imgFile.getBytes(),fileName);
 			//将上传图片名称存入Redis，基于Redis的Set集合存储
+			redisTemplate.boundSetOps(RedisConstant.SETMEAL_PIC_RESOURCES).add(fileName);
 			//图片上传成功
 			return new Result(true, MessageConstant.PIC_UPLOAD_SUCCESS, fileName);
 		}catch (Exception e){

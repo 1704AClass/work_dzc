@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
@@ -21,6 +22,9 @@ public class SetmealServiceImpl implements SetmealService{
 
 	@Autowired
 	private SetmealMapper setmealMapper;
+	
+	@Autowired
+	private RedisTemplate redisTemplate;
 
 	//新增套餐
 	@Override
@@ -32,13 +36,13 @@ public class SetmealServiceImpl implements SetmealService{
 			setSetmealAndCheckGroup(setmeal.getId(), checkgroupIds);
 		}
 		//将图片名称保存到Redis
-		//savePic2Redis(setmeal.getImg());
+		savePic2Redis(setmeal.getImg());
 	}
 	
 	//将图片名称保存到Redis
-	/*private void savePic2Redis(String pic){
-	    
-	}*/
+	private void savePic2Redis(String pic){
+	    redisTemplate.boundHashOps("imageAll").put(RedisConstant.SETMEAL_PIC_RESOURCES, pic);
+	}
 
 
 	//绑定套餐和检查组的多对多关系
