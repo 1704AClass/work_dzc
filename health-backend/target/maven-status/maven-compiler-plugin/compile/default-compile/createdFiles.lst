@@ -1,3 +1,4 @@
 com\backend\controller\CheckgroupController.class
 com\backend\controller\CheckItemController.class
 com\backend\controller\SetmealController.class
+com\backend\controller\OrderSettingController.class
