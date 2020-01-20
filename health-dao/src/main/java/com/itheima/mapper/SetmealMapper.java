@@ -1,5 +1,6 @@
 package com.itheima.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import com.github.pagehelper.Page;
@@ -12,5 +13,9 @@ public interface SetmealMapper {
 	void setSetmealAndCheckGroup(Map<String, Integer> map);
 
 	Page<Setmeal> selectByCondition(String queryString);
+
+	List<Setmeal> findAll();
+
+	Setmeal findById(int id);
 
 }
