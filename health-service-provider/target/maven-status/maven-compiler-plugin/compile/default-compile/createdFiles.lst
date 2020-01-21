@@ -1,3 +1,4 @@
+com\health\service\impl\OrderServiceImpl.class
 com\health\service\impl\CheckgroupServiceImpl.class
 com\health\service\impl\OrderSettingServiceImpl.class
 com\health\service\impl\CheckItemServiceImpl.class

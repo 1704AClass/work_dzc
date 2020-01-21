@@ -16,4 +16,5 @@ public interface OrderSettingMapper {
 
 	List<OrderSetting> getOrderSettingByMonth(Map map);
 
+	OrderSetting findByOrderDate(Date date);
 }
