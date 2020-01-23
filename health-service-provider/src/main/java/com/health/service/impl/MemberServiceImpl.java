@@ -1,5 +1,8 @@
 package com.health.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.dubbo.config.annotation.Service;
@@ -27,6 +30,18 @@ public class MemberServiceImpl implements MemberService{
 	public Member findByTelephone(String telephone) {
 		// TODO Auto-generated method stub
 		return memberMapper.findByTelephone(telephone);
+	}
+
+	//根据月份统计会员数量
+	@Override
+	public List<Integer> findMemberCountByMonth(List<String> list) {
+		List<Integer> month = new ArrayList<>();
+		for(String m : list){
+		m = m + ".31";//格式：2019.04.31
+		Integer count = memberMapper.findMemberCountBeforeDate(m);
+		month.add(count);
+		}
+		return month;
 	}
 	
 	

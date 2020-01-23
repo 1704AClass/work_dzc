@@ -8,4 +8,6 @@ public interface MemberMapper {
 
 	void add(Member member);
 
+	Integer findMemberCountBeforeDate(String m);
+
 }

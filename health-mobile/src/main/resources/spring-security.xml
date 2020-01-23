@@ -52,6 +52,19 @@
         <security:intercept-url pattern="/c.html"  access="hasRole('ROLE_ADMIN')" />
         <!--拥有ROLE_ADMIN角色就可以访问d.html页面，注意：此处虽然写的是ADMIN角色，框架会自动给加上前缀ROLE_-->
         <security:intercept-url pattern="/d.html"  access="hasRole('ADMIN')" />
+        
+      
+		<!-- intercept‐url：定义一个拦截规则
+		pattern：对哪些url进行权限控制
+		access：在请求对应的URL时需要什么权限，默认配置时它应该是一个以逗号
+		分隔的角色列表，
+		请求的用户只需拥有其中的一个角色就能成功访问对应的URL
+		isAuthenticated()：已经经过认证（不是匿名用户） -->
+		
+		<security:intercept‐url pattern="/pages/**"
+		access="isAuthenticated()" />
+        
+        
         <!--
             form-login：定义表单登录信息
         -->
