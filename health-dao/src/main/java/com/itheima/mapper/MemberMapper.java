@@ -10,4 +10,10 @@ public interface MemberMapper {
 
 	Integer findMemberCountBeforeDate(String m);
 
+	Integer findMemberCountByDate(String today);
+
+	Integer findMemberTotalCount();
+
+	Integer findMemberCountAfterDate(String thisWeekMonday);
+
 }
